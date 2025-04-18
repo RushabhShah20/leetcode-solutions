@@ -1,5 +1,5 @@
 // Problem: Check if All A's Appears Before All B's
-// Link to the problem: https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/description/
+// Link to the problem: https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/
 class Solution
 {
 public:
