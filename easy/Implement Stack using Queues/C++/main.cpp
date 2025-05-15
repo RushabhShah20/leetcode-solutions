@@ -1,52 +1,48 @@
-// Problem: Implement Queue using Stacks
-// Link to the problem: https://leetcode.com/problems/implement-queue-using-stacks/
-class MyQueue
+// Problem: Implement Stack using Queues
+// Link to the problem: https://leetcode.com/problems/implement-stack-using-queues/
+class MyStack
 {
 public:
-    stack<int> stack1;
-    stack<int> stack2;
-    MyQueue()
+    queue<int> q1;
+    queue<int> q2;
+    MyStack()
     {
     }
 
     void push(int x)
     {
-        while (!stack1.empty())
+        q2.push(x);
+        while (!q1.empty())
         {
-            stack2.push(stack1.top());
-            stack1.pop();
+            q2.push(q1.front());
+            q1.pop();
         }
-        stack1.push(x);
-        while (!stack2.empty())
-        {
-            stack1.push(stack2.top());
-            stack2.pop();
-        }
+        swap(q1, q2);
     }
 
     int pop()
     {
-        int temp = stack1.top();
-        stack1.pop();
-        return temp;
+        int x = q1.front();
+        q1.pop();
+        return x;
     }
 
-    int peek()
+    int top()
     {
-        return stack1.top();
+        return q1.front();
     }
 
     bool empty()
     {
-        return stack1.empty();
+        return q1.empty();
     }
 };
 
 /**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue* obj = new MyQueue();
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
  * obj->push(x);
  * int param_2 = obj->pop();
- * int param_3 = obj->peek();
+ * int param_3 = obj->top();
  * bool param_4 = obj->empty();
  */
