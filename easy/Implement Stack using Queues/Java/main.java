@@ -1,45 +1,41 @@
-// Problem: Implement Queue using Stacks
-// Link to the problem: https://leetcode.com/problems/implement-queue-using-stacks/
-class MyQueue {
-    Stack<Integer> stack1 = new Stack<>();
-    Stack<Integer> stack2 = new Stack<>();
+// Problem: Implement Stack using Queues
+// Link to the problem: https://leetcode.com/problems/implement-stack-using-queues/
+class MyStack {
+    Queue<Integer> q1 = new LinkedList<>();
+    Queue<Integer> q2 = new LinkedList<>();
 
-    public MyQueue() {
+    public MyStack() {
 
     }
 
     public void push(int x) {
-        while (!stack1.empty()) {
-            stack2.push(stack1.lastElement());
-            stack1.pop();
+        while (!q1.isEmpty()) {
+            q2.add(q1.remove());
         }
-        stack1.push(x);
-        while (!stack2.empty()) {
-            stack1.push(stack2.lastElement());
-            stack2.pop();
+        q1.add(x);
+        while (!q2.isEmpty()) {
+            q1.add(q2.remove());
         }
     }
 
     public int pop() {
-        int x = stack1.lastElement();
-        stack1.pop();
-        return x;
+        return q1.remove();
     }
 
-    public int peek() {
-        return stack1.lastElement();
+    public int top() {
+        return q1.peek();
     }
 
     public boolean empty() {
-        return stack1.empty();
+        return q1.isEmpty();
     }
 }
 
 /**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue obj = new MyQueue();
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
  * obj.push(x);
  * int param_2 = obj.pop();
- * int param_3 = obj.peek();
+ * int param_3 = obj.top();
  * boolean param_4 = obj.empty();
  */
