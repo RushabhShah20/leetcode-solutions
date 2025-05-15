@@ -1,4 +1,4 @@
-// Problem: binary Search
+// Problem: Binary Search
 // Link to the problem: https://leetcode.com/problems/binary-search/
 class Solution
 {
