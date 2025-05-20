@@ -1,5 +1,5 @@
-// Problem: Find Most Frequent Vowel And Consonent
-// Link to the problem: https://leetcode.com/problems/find-most-frequent-vowel-and-consonent
+// Problem: Find Most Frequent Vowel And Consonant
+// Link to the problem: https://leetcode.com/problems/find-most-frequent-vowel-and-consonant/
 class Solution
 {
 public:
