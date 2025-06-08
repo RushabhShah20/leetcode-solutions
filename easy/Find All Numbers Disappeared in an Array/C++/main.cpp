@@ -1,7 +1,5 @@
 // Problem: Find All Numbers Disappeared in an Array
 // Link to the problem: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
-#include <bits/stdc++.h>
-using namespace std;
 class Solution
 {
 public:
