@@ -1,5 +1,5 @@
 // Problem: Jewels and Stones
-// Link to the problem: https://leetcode.com/problems/maximum-product-of-two-digits/
+// Link to the problem: https://leetcode.com/problems/jewels-and-stones/
 class Solution
 {
 public:
