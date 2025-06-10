@@ -1,7 +1,5 @@
 // Problem: Kth Smallest Element in a Sorted Matrix
 // Link to the problem: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
-#include <bits/stdc++.h>
-using namespace std;
 class Solution
 {
 public:
