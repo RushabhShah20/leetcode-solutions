@@ -1,0 +1,24 @@
+// Problem: Middle of the Linked List
+// Link to the problem: https://leetcode.com/problems/middle-of-the-linked-list/
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode *middleNode(struct ListNode *head)
+{
+    if (head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+    struct ListNode *slow = head;
+    struct ListNode *fast = head;
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+}
