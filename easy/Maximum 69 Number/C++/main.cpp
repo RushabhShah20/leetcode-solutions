@@ -1,5 +1,5 @@
 // Problem: Maximum 69 Number
-// Link to the problem: https://leetcode.com/problems/maximum-69-number/?envType=daily-question&envId=2025-08-16
+// Link to the problem: https://leetcode.com/problems/maximum-69-number/
 class Solution
 {
 public:
