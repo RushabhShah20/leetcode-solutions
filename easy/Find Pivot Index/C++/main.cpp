@@ -1,7 +1,5 @@
 // Problem: Find Pivot Index
 // Link to the problem: https://leetcode.com/problems/find-pivot-index/
-#include <bits/stdc++.h>
-using namespace std;
 class Solution
 {
 public:
