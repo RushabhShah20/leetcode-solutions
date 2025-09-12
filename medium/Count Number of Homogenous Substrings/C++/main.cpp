@@ -1,5 +1,5 @@
 // Problem: Count Number of Homogenous Substrings
-// Link to the problem: https://leetcode.com/problems/count-number-of-homogenous-substrings/?envType=problem-list-v2&envId=math
+// Link to the problem: https://leetcode.com/problems/count-number-of-homogenous-substrings/
 class Solution
 {
 public:
