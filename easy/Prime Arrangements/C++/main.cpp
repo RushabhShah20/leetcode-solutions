@@ -1,7 +1,5 @@
 // Problem: Prime Arrangements
 // Link to the problem: https://leetcode.com/problems/prime-arrangements/
-#include <bits/stdc++.h>
-using namespace std;
 class Solution
 {
 public:
