@@ -1,5 +1,5 @@
 // Problem: All Elements in Two Binary Search Trees
-// Link to the problem: https://leetcode.com/problems/all-elements-in-two-binary-search-trees/F
+// Link to the problem: https://leetcode.com/problems/all-elements-in-two-binary-search-trees/
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
