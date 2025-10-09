@@ -1,7 +1,5 @@
 // Problem: Find the Minimum Amount of Time to Brew Potions
 // Link to the problem: https://leetcode.com/problems/find-the-minimum-amount-of-time-to-brew-potions/
-#include <bits/stdc++.h>
-using namespace std;
 class Solution
 {
 public:
