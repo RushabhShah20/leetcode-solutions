@@ -1,5 +1,5 @@
 // Problem: Swim in Rising Water
-// Link to the problem: https://leetcode.com/problems/swim-in-rising-water/?envType=daily-question&envId=2025-10-06
+// Link to the problem: https://leetcode.com/problems/swim-in-rising-water/
 class Solution
 {
 public:
