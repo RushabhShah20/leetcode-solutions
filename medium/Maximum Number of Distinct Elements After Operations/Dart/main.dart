@@ -1,0 +1,19 @@
+// Problem: Maximum Number of Distinct Elements After Operations
+// Link to the problem: https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/
+class Solution {
+  int maxDistinctElements(List<int> nums, int k) {
+    int ans = 0, x = -0x8000000000000000;
+    nums.sort();
+    for (int num in nums) {
+      int l = num - k, r = num + k;
+      if (x < l) {
+        x = l;
+        ans++;
+      } else if (x < r) {
+        x++;
+        ans++;
+      }
+    }
+    return ans;
+  }
+}
