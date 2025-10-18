@@ -1,0 +1,25 @@
+// Problem: Maximum Number of Distinct Elements After Operations
+// Link to the problem: https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/
+public class Solution
+{
+    public int MaxDistinctElements(int[] nums, int k)
+    {
+        int ans = 0, x = Int32.MinValue;
+        Array.Sort(nums);
+        foreach (int num in nums)
+        {
+            int l = num - k, r = num + k;
+            if (x < l)
+            {
+                x = l;
+                ans++;
+            }
+            else if (x < r)
+            {
+                x++;
+                ans++;
+            }
+        }
+        return ans;
+    }
+}
