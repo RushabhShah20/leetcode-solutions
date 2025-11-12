@@ -1,0 +1,9 @@
+// Problem: Calculate Delayed Arrival Time
+// Link to the problem: https://leetcode.com/problems/calculate-delayed-arrival-time/
+public class Solution
+{
+    public int FindDelayedArrivalTime(int arrivalTime, int delayedTime)
+    {
+        return (arrivalTime + delayedTime) % 24;
+    }
+}
