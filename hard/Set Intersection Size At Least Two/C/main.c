@@ -1,0 +1,40 @@
+// Problem: Set Intersection Size At Least Two
+// Link to the problem: https://leetcode.com/problems/set-intersection-size-at-least-two/
+int cmp(const void *a, const void *b)
+{
+    int *x = *(int **)a;
+    int *y = *(int **)b;
+    if (x[1] == y[1])
+    {
+        return y[0] - x[0];
+    }
+    else
+    {
+        return x[1] - y[1];
+    }
+}
+
+int intersectionSizeTwo(int **intervals, int intervalsSize, int *intervalsColSize)
+{
+    qsort(intervals, intervalsSize, sizeof(int *), cmp);
+    int ans = 0;
+    int a = -1, b = -1;
+    for (int i = 0; i < intervalsSize; i++)
+    {
+        int l = intervals[i][0];
+        int r = intervals[i][1];
+        if (l > b)
+        {
+            a = r - 1;
+            b = r;
+            ans += 2;
+        }
+        else if (l > a)
+        {
+            a = b;
+            b = r;
+            ans += 1;
+        }
+    }
+    return ans;
+}
