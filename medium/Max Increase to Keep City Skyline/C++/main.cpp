@@ -1,0 +1,28 @@
+// Problem: Max Increase to Keep City Skyline
+// Link to the problem: https://leetcode.com/problems/max-increase-to-keep-city-skyline/
+class Solution
+{
+public:
+    int maxIncreaseKeepingSkyline(vector<vector<int>> &grid)
+    {
+        int n = grid.size();
+        vector<int> rows(n, 0), cols(n, 0);
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                rows[i] = max(rows[i], grid[i][j]);
+                cols[j] = max(cols[j], grid[i][j]);
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                ans += min(rows[i], cols[j]) - grid[i][j];
+            }
+        }
+        return ans;
+    }
+};
