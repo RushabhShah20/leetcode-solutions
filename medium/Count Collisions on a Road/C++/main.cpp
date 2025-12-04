@@ -1,0 +1,28 @@
+// Problem: Count Collisions on a Road
+// Link to the problem: https://leetcode.com/problems/count-collisions-on-a-road/
+class Solution
+{
+public:
+    int countCollisions(string directions)
+    {
+        int n = directions.size();
+        int i = 0, j = n - 1;
+        while (i < n && directions[i] == 'L')
+        {
+            i++;
+        }
+        while (j >= 0 && directions[j] == 'R')
+        {
+            j--;
+        }
+        int ans = 0;
+        for (int k = i; k <= j; k++)
+        {
+            if (directions[k] != 'S')
+            {
+                ans++;
+            }
+        }
+        return ans;
+    }
+};
