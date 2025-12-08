@@ -5,20 +5,31 @@ class Solution
 public:
     int countTriples(int n)
     {
-        int count = 0;
-        for (int i = 1; i <= n; i++)
+        int ans = 0;
+        for (int i = 1; i <= n; ++i)
         {
-            for (int j = i; j <= n; j++)
+            int x = i * i;
+            int l = 1;
+            int r = i - 1;
+            while (l < r)
             {
-                for (int k = i; k <= n; k++)
+                int sum = l * l + r * r;
+                if (sum == x)
                 {
-                    if (i * i + j * j == k * k)
-                    {
-                        count = count + 2;
-                    }
+                    ans += 2;
+                    l++;
+                    r--;
+                }
+                else if (sum < x)
+                {
+                    l++;
+                }
+                else
+                {
+                    r--;
                 }
             }
         }
-        return count;
+        return ans;
     }
 };
