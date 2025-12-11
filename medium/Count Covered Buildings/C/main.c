@@ -1,0 +1,29 @@
+// Problem: Count Covered Buildings
+// Link to the problem: https://leetcode.com/problems/count-covered-buildings/
+int countCoveredBuildings(int n, int **buildings, int buildingsSize, int *buildingsColSize)
+{
+    int *maxRow = (int *)calloc(n + 1, sizeof(int)), *minRow = (int *)calloc(n + 1, sizeof(int)), *maxCol = (int *)calloc(n + 1, sizeof(int)), *minCol = (int *)calloc(n + 1, sizeof(int));
+    for (int i = 0; i <= n; i++)
+    {
+        minCol[i] = n + 1;
+        minRow[i] = n + 1;
+    }
+    for (int i = 0; i < buildingsSize; i++)
+    {
+        int x = buildings[i][0], y = buildings[i][1];
+        maxRow[y] = fmax(maxRow[y], x);
+        minRow[y] = fmin(minRow[y], x);
+        maxCol[x] = fmax(maxCol[x], y);
+        minCol[x] = fmin(minCol[x], y);
+    }
+    int ans = 0;
+    for (int i = 0; i < buildingsSize; i++)
+    {
+        int x = buildings[i][0], y = buildings[i][1];
+        if (x > minRow[y] && x < maxRow[y] && y > minCol[x] && y < maxCol[x])
+        {
+            ans++;
+        }
+    }
+    return ans;
+}
