@@ -8,11 +8,11 @@ public:
         int ans = 0;
         sort(capacity.begin(), capacity.end(), greater<int>());
         int total = 0;
-        for (int a : apple)
+        for (const int a : apple)
         {
             total += a;
         }
-        for (int c : capacity)
+        for (const int c : capacity)
         {
             if (total >= c)
             {
