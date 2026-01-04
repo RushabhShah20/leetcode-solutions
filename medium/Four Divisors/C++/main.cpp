@@ -22,22 +22,27 @@ public:
     int sum(vector<int> &arr)
     {
         int ans = 0;
-        for (int i = 0; i < arr.size(); i++)
+        for (const int &i : a)
         {
-            ans += arr[i];
+            ans += i;
         }
         return ans;
     }
     int sumFourDivisors(vector<int> &nums)
     {
         int ans = 0;
-        for (int i = 0; i < nums.size(); i++)
+        unordered_map<int, int> m;
+        for (const int &num : nums)
         {
-            vector<int> x = factors(nums[i]);
+            m[num]++;
+        }
+        for (const pair<int, int> &i : m)
+        {
+            vector<int> x = factors(i.first);
             if (x.size() == 4)
             {
                 int y = sum(x);
-                ans += y;
+                ans += (y * i.second);
             }
         }
         return ans;
