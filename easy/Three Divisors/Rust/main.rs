@@ -1,0 +1,17 @@
+// Problem: Three Divisors
+// Link to the problem: https://leetcode.com/problems/three-divisors/
+impl Solution {
+    pub fn is_three(n: i32) -> bool {
+        let mut count: i32 = 0;
+        for i in 1..=n {
+            if (n % i == 0) {
+                count += 1;
+            }
+        }
+        if (count == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
