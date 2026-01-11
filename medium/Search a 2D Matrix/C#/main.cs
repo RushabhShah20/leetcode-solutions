@@ -1,12 +1,10 @@
 // Problem: Search a 2D Matrix
 // Link to the problem: https://leetcode.com/problems/search-a-2d-matrix/
-class Solution
+public class Solution
 {
-public:
-    bool searchMatrix(vector<vector<int>> &matrix, int target)
+    public bool SearchMatrix(int[][] matrix, int target)
     {
-        const int m = matrix.size(), n = matrix[0].size();
-        int i = 0, j = m * n - 1;
+        int m = matrix.Length, n = matrix[0].Length, i = 0, j = m * n - 1;
         while (i <= j)
         {
             int k = (i + j) / 2;
@@ -26,4 +24,4 @@ public:
         }
         return false;
     }
-};
+}

@@ -2,12 +2,19 @@
 // Link to the problem: https://leetcode.com/problems/search-a-2d-matrix/
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        List<Integer> ans = new ArrayList<>();
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                ans.add(matrix[i][j]);
+        final int m = matrix.length, n = matrix[0].length;
+        int i = 0, j = m * n - 1;
+        while (i <= j) {
+            int k = (i + j) / 2;
+            int val = matrix[k / n][k % n];
+            if (val == target) {
+                return true;
+            } else if (val < target) {
+                i = k + 1;
+            } else {
+                j = k - 1;
             }
         }
-        return ans.indexOf(target) == -1 ? false : true;
+        return false;
     }
 }
