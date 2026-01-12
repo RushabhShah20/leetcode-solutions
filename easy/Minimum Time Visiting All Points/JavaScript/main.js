@@ -5,7 +5,8 @@
  * @return {number}
  */
 var minTimeToVisitAllPoints = function (points) {
-    let n = points.length, ans = 0;
+    const n = points.length;
+    let ans = 0;
     for (let i = 1; i < n; i++) {
         ans += Math.max(Math.abs(points[i - 1][1] - points[i][1]), Math.abs(points[i - 1][0] - points[i][0]));
     }
