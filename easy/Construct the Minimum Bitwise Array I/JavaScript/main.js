@@ -5,10 +5,10 @@
  * @return {number[]}
  */
 var minBitwiseArray = function (nums) {
-    let n = nums.length;
+    const n = nums.length;
     let ans = new Array(n);
     for (let i = 0; i < n; i++) {
-        if (nums[i] % 2 == 0) {
+        if (nums[i] % 2 === 0) {
             ans[i] = -1;
         }
         else {

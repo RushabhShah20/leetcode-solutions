@@ -2,7 +2,7 @@
 // Link to the problem: https://leetcode.com/problems/construct-the-minimum-bitwise-array-i/
 class Solution {
     public int[] minBitwiseArray(List<Integer> nums) {
-        int n = nums.size();
+        final int n = nums.size();
         int[] ans = new int[n];
         for (int i = 0; i < n; i++) {
             if (nums.get(i) % 2 == 0) {
