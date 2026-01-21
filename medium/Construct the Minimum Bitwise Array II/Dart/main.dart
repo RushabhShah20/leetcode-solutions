@@ -1,0 +1,16 @@
+// Problem: Construct the Minimum Bitwise Array II
+// Link to the problem: https://leetcode.com/problems/construct-the-minimum-bitwise-array-ii/
+class Solution {
+  List<int> minBitwiseArray(List<int> nums) {
+    final int n = nums.length;
+    List<int> ans = new List.filled(n, 0);
+    for (int i = 0; i < n; i++) {
+      if (nums[i] % 2 == 0) {
+        ans[i] = -1;
+      } else {
+        ans[i] = nums[i] - (((nums[i] + 1) & (-nums[i] - 1)) ~/ 2);
+      }
+    }
+    return ans;
+  }
+}
