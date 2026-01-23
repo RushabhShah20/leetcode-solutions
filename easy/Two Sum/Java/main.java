@@ -2,17 +2,16 @@
 // Link to the problem: https://leetcode.com/problems/two-sum/
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        if (nums == null || nums.length < 2) {
-            return new int[] { 0, 0 };
-        }
-        HashMap<Integer, Integer> ans = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            if (ans.containsKey(nums[i])) {
-                return new int[] { ans.get(nums[i]), i };
+        final int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int dif = target - nums[i];
+            if (map.containsKey(dif)) {
+                return new int[] { map.get(dif), i };
             } else {
-                ans.put(target - nums[i], i);
+                map.put(nums[i], i);
             }
         }
-        return new int[] { 0, 0 };
+        return new int[] {};
     }
 }
