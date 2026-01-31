@@ -5,8 +5,7 @@ class Solution
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>> &mat)
     {
-        int n = mat.size();
-        int m = mat[0].size();
+        const int n = mat.size(), m = mat[0].size();
         vector<vector<int>> vis(n, vector<int>(m, 0));
         vector<vector<int>> ans(n, vector<int>(m, 0));
         queue<pair<pair<int, int>, int>> q;
@@ -25,19 +24,19 @@ public:
                 }
             }
         }
-        int delrow[] = {-1, 0, +1, 0};
-        int delcol[] = {0, +1, 0, -1};
         while (!q.empty())
         {
-            int row = q.front().first.first;
-            int col = q.front().first.second;
-            int steps = q.front().second;
+            const int row = q.front().first.first;
+            const int col = q.front().first.second;
+            const int steps = q.front().second;
             q.pop();
             ans[row][col] = steps;
             for (int i = 0; i < 4; i++)
             {
-                int nrow = row + delrow[i];
-                int ncol = col + delcol[i];
+                const vector<int> delcol = {0, +1, 0, -1};
+                const vector<int> delrow = {-1, 0, +1, 0};
+                const int nrow = row + delrow[i];
+                const int ncol = col + delcol[i];
                 if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && vis[nrow][ncol] == 0)
                 {
                     vis[nrow][ncol] = 1;
