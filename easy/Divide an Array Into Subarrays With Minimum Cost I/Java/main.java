@@ -1,25 +1,18 @@
 // Problem: Divide an Array Into Subarrays With Minimum Cost I
 // Link to the problem: https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i/
-class Solution
-{
-public:
-    int minimumCost(vector<int> &nums)
-    {
-        const int n = nums.size();
+class Solution {
+    public int minimumCost(int[] nums) {
+        final int n = nums.length;
         int m1 = 51, m2 = 51;
-        for (int i = 1; i < n; i++)
-        {
-            if (nums[i] < m1)
-            {
+        for (int i = 1; i < n; i++) {
+            if (nums[i] < m1) {
                 m2 = m1;
                 m1 = nums[i];
-            }
-            else if (nums[i] < m2)
-            {
+            } else if (nums[i] < m2) {
                 m2 = nums[i];
             }
         }
-        const int ans = nums[0] + m1 + m2;
+        final int ans = nums[0] + m1 + m2;
         return ans;
     }
-};
+}
