@@ -5,37 +5,31 @@ class Solution
 public:
     bool isTrionic(vector<int> &nums)
     {
-        for (int i = 1; i < nums.size() - 1; i++)
+        const int n = nums.size();
+        int i = 0, p = 0, q = 0;
+        while (i < n - 1 && nums[i + 1] > nums[i])
         {
-            for (int j = i + 1; j < nums.size() - 1; j++)
+            i++;
+        }
+        p = i;
+        while (i < n - 1 && nums[i + 1] < nums[i])
+        {
+            i++;
+        }
+        q = i;
+        while (i < n - 1 && nums[i + 1] > nums[i])
+        {
+            i++;
+        }
+        if (i == n - 1)
+        {
+            if (p != 0 && q != 0 && p != n - 1 && q != n - 1)
             {
-                bool x = true;
-                vector<int> a(nums.begin(), nums.begin() + i + 1), b(nums.begin() + i, nums.begin() + j + 1), c(nums.begin() + j, nums.end());
-                for (int k = 0; k < a.size() - 1; k++)
-                {
-                    if (a[k] >= a[k + 1])
-                    {
-                        x = false;
-                    }
-                }
-                for (int k = 0; k < b.size() - 1; k++)
-                {
-                    if (b[k] <= b[k + 1])
-                    {
-                        x = false;
-                    }
-                }
-                for (int k = 0; k < c.size() - 1; k++)
-                {
-                    if (c[k] >= c[k + 1])
-                    {
-                        x = false;
-                    }
-                }
-                if (x == true)
-                {
-                    return true;
-                }
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         return false;
