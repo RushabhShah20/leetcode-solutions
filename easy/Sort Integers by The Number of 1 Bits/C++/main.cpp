@@ -3,26 +3,13 @@
 class Solution
 {
 public:
-    vector<int> toBinary(int n)
-    {
-        vector<int> ans;
-        while (n > 0)
-        {
-            int rem = n % 2;
-            ans.push_back(rem);
-            n /= 2;
-        }
-        return ans;
-    }
-    int setBits(vector<int> &arr)
+    int setBits(int n)
     {
         int ans = 0;
-        for (int i = 0; i < arr.size(); i++)
+        while (n > 0)
         {
-            if (arr[i] == 1)
-            {
-                ans++;
-            }
+            n &= (n - 1);
+            ans++;
         }
         return ans;
     }
@@ -30,21 +17,20 @@ public:
     {
         vector<int> ans;
         map<int, vector<int>> m;
-        for (int i = 0; i < arr.size(); i++)
+        for (const int a : arr)
         {
-            vector<int> y = toBinary(arr[i]);
-            int x = setBits(y);
-            m[x].push_back(arr[i]);
+            const int x = setBits(a);
+            m[x].push_back(a);
         }
-        for (auto &i : m)
+        for (pair<const int, vector<int>> &i : m)
         {
             sort(i.second.begin(), i.second.end());
         }
-        for (auto i : m)
+        for (const pair<int, vector<int>> i : m)
         {
-            for (int j = 0; j < i.second.size(); j++)
+            for (int j : i.second)
             {
-                ans.push_back(i.second[j]);
+                ans.push_back(j);
             }
         }
         return ans;
