@@ -5,14 +5,19 @@ class Solution
 public:
     int minOperations(string s)
     {
+        const int n = s.size();
         int ansEven = 0, ansOdd = 0;
-        for (int i = 0; i < s.size(); i++)
+        for (int i = 0; i < n; i++)
         {
             if (i % 2 == 0)
             {
                 if (s[i] == '0')
                 {
                     ansEven++;
+                }
+                else
+                {
+                    ansOdd++;
                 }
             }
             else
@@ -21,25 +26,13 @@ public:
                 {
                     ansEven++;
                 }
-            }
-        }
-        for (int i = 0; i < s.size(); i++)
-        {
-            if (i % 2 == 0)
-            {
-                if (s[i] == '1')
-                {
-                    ansOdd++;
-                }
-            }
-            else
-            {
-                if (s[i] == '0')
+                else
                 {
                     ansOdd++;
                 }
             }
         }
-        return min(ansEven, ansOdd);
+        const int ans = min(ansEven, ansOdd);
+        return ans;
     }
 };
