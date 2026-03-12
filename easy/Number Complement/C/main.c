@@ -1,17 +1,16 @@
 // Problem: Number Complement
 // Link to the problem: https://leetcode.com/problems/number-complement/
-/**
- * @param {number} num
- * @return {number}
- */
-var findComplement = function (num) {
-    if (num === 0) {
+int findComplement(int num)
+{
+    if (num == 0)
+    {
         return 1;
     }
-    let x = 1;
-    while (x < num) {
+    int x = 1;
+    while (x < num)
+    {
         x = (x << 1) | 1;
     }
-    const ans = num ^ x;
+    const int ans = num ^ x;
     return ans;
-};
+}
