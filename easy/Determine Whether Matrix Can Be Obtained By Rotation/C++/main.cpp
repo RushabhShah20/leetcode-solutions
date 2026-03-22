@@ -5,7 +5,7 @@ class Solution
 public:
     bool findRotation(vector<vector<int>> &mat, vector<vector<int>> &target)
     {
-        int n = mat.size();
+        const int n = mat.size();
         vector<vector<int>> mat90(n, vector<int>(n, 0)), mat180(n, vector<int>(n, 0)), mat270(n, vector<int>(n, 0));
         for (int i = 0; i < n; i++)
         {
@@ -18,7 +18,7 @@ public:
         {
             for (int i = 0; i < n / 2; i++)
             {
-                int temp = mat90[j][i];
+                const int temp = mat90[j][i];
                 mat90[j][i] = mat90[j][n - 1 - i];
                 mat90[j][n - i - 1] = temp;
             }
@@ -34,7 +34,7 @@ public:
         {
             for (int i = 0; i < n / 2; i++)
             {
-                int temp = mat180[j][i];
+                const int temp = mat180[j][i];
                 mat180[j][i] = mat180[j][n - 1 - i];
                 mat180[j][n - i - 1] = temp;
             }
@@ -50,7 +50,7 @@ public:
         {
             for (int i = 0; i < n / 2; i++)
             {
-                int temp = mat270[j][i];
+                const int temp = mat270[j][i];
                 mat270[j][i] = mat270[j][n - 1 - i];
                 mat270[j][n - i - 1] = temp;
             }
