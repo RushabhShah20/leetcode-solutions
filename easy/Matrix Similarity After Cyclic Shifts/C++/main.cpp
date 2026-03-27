@@ -6,11 +6,11 @@ public:
     bool areSimilar(vector<vector<int>> &mat, int k)
     {
         const int m = mat.size(), n = mat[0].size();
-        for (const vector<int> &rows : mat)
+        for (int i = 0; i < m; i++)
         {
-            for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
             {
-                if (rows[i] != rows[(i + k) % n])
+                if (mat[i][j] != mat[i][(j + k) % n])
                 {
                     return false;
                 }
