@@ -5,24 +5,9 @@ class Solution
 public:
     bool canBeEqual(string s1, string s2)
     {
-        string a, b, c, d;
-        for (int i = 0; i < 4; i++)
-        {
-            if (i % 2 == 0)
-            {
-                a.append(1, s1[i]);
-                c.append(1, s2[i]);
-            }
-            else
-            {
-                b.append(1, s1[i]);
-                d.append(1, s2[i]);
-            }
-        }
-        sort(a.begin(), a.end());
-        sort(b.begin(), b.end());
-        sort(c.begin(), c.end());
-        sort(d.begin(), d.end());
-        return ((a == c) && (b == d));
+        const bool x = (s1[0] == s2[0] && s1[2] == s2[2]) || (s1[0] == s2[2] && s1[2] == s2[0]);
+        const bool y = (s1[1] == s2[1] && s1[3] == s2[3]) || (s1[1] == s2[3] && s1[3] == s2[1]);
+        const bool ans = x && y;
+        return ans;
     }
 };
