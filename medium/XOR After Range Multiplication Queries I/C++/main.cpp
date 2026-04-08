@@ -5,8 +5,8 @@ class Solution
 public:
     int xorAfterQueries(vector<int> &nums, vector<vector<int>> &queries)
     {
-        int mod = 1e9 + 7;
-        for (vector<int> query : queries)
+        const int mod = 1e9 + 7;
+        for (const vector<int> &query : queries)
         {
             for (int i = query[0]; i <= query[1]; i += query[2])
             {
@@ -14,7 +14,7 @@ public:
             }
         }
         int ans = 0;
-        for (int num : nums)
+        for (const int num : nums)
         {
             ans ^= num;
         }
