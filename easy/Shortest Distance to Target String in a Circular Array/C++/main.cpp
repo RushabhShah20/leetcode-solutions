@@ -5,41 +5,16 @@ class Solution
 public:
     int closestTarget(vector<string> &words, string target, int startIndex)
     {
-        int n = words.size();
-        vector<int> targetIndex;
+        const int n = words.size();
+        int ans = n;
         for (int i = 0; i < n; i++)
         {
             if (words[i] == target)
             {
-                targetIndex.push_back(i);
+                const int x = abs(i - startIndex);
+                ans = min(ans, min(x, n - x));
             }
         }
-        if (targetIndex.size() == 0)
-        {
-            return -1;
-        }
-        else
-        {
-            int ans = 2 * n;
-            for (int i = 0; i < targetIndex.size(); i++)
-            {
-                if (targetIndex[i] > startIndex)
-                {
-                    ans = min(ans, (targetIndex[i] - startIndex) % n);
-                    ans = min(ans, (startIndex + n - targetIndex[i]) % n);
-                }
-                else if (targetIndex[i] < startIndex)
-                {
-                    ans = min(ans, (startIndex - targetIndex[i]) % n);
-                    ans = min(ans, (targetIndex[i] + n - startIndex) % n);
-                }
-                else
-                {
-                    ans = 0;
-                    break;
-                }
-            }
-            return ans;
-        }
+        return ans == n ? -1 : ans;
     }
 };
