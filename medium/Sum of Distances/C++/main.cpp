@@ -11,26 +11,22 @@ public:
         {
             m[nums[i]].push_back(i);
         }
-        vector<long long> ans(n, 0), prefix(n, 0), suffix(n, 0);
+        vector<long long> ans(n, 0);
         for (const pair<int, vector<long long>> i : m)
         {
-            const vector<long long> v = i.second;
-            for (int i = 1; i < v.size(); i++)
+            long long x = 0;
+            for (const long long j : i.second)
             {
-                prefix[v[i]] = prefix[v[i - 1]] + (i * (long long)(v[i] - v[i - 1]));
+                x += j;
             }
-        }
-        for (const pair<int, vector<long long>> i : m)
-        {
-            const vector<long long> v = i.second;
-            for (int i = v.size() - 2; i >= 0; i--)
+            long long y = 0;
+            const long long z = i.second.size();
+            for (long long j = 0; j < z; j++)
             {
-                suffix[v[i]] = suffix[v[i + 1]] + ((long long)(v.size() - i - 1) * (long long)(v[i + 1] - v[i]));
+                const long long k = i.second[j];
+                ans[k] = x - y * 2 + k * (2 * j - z);
+                y += k;
             }
-        }
-        for (int i = 0; i < n; i++)
-        {
-            ans[i] += (prefix[i] + suffix[i]);
         }
         return ans;
     }
