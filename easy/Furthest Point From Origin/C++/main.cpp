@@ -5,8 +5,9 @@ class Solution
 public:
     int furthestDistanceFromOrigin(string moves)
     {
+        const int n = moves.size();
         int left = 0, right = 0, spaces = 0;
-        for (int i = 0; i < moves.size(); i++)
+        for (int i = 0; i < n; i++)
         {
             if (moves[i] == 'L')
             {
@@ -21,6 +22,7 @@ public:
                 spaces++;
             }
         }
-        return spaces + abs(left - right);
+        const int ans = spaces + abs(left - right);
+        return ans;
     }
 };
