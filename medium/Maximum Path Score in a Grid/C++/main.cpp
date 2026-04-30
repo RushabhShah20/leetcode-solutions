@@ -5,10 +5,9 @@ class Solution
 public:
     int maxPathScore(vector<vector<int>> &grid, int k)
     {
-        int m = grid.size(), n = grid[0].size();
+        const int m = grid.size(), n = grid[0].size();
         vector<vector<vector<int>>> dp(m, vector<vector<int>>(n, vector<int>(k + 1, -1)));
-        int x = ((grid[0][0] == 0) ? (0) : (1)), y = grid[0][0];
-        dp[0][0][x] = y;
+        dp[0][0][0] = 0;
         for (int i = 0; i < m; i++)
         {
             for (int j = 0; j < n; j++)
@@ -19,25 +18,20 @@ public:
                     {
                         continue;
                     }
-                    int current_score = dp[i][j][c];
                     if (i + 1 < m)
                     {
-                        int next_val = grid[i + 1][j];
-                        int next_cost = c + (next_val == 0 ? 0 : 1);
-                        int next_score = current_score + (next_val);
-                        if (next_cost <= k)
+                        const int x = grid[i + 1][j], y = x == 0 ? 0 : 1;
+                        if (c + y <= k)
                         {
-                            dp[i + 1][j][next_cost] = max(dp[i + 1][j][next_cost], next_score);
+                            dp[i + 1][j][c + y] = max(dp[i + 1][j][c + y], dp[i][j][c] + x);
                         }
                     }
                     if (j + 1 < n)
                     {
-                        int next_val = grid[i][j + 1];
-                        int next_cost = c + (next_val == 0 ? 0 : 1);
-                        int next_score = current_score + (next_val);
-                        if (next_cost <= k)
+                        const int x = grid[i][j + 1], y = x == 0 ? 0 : 1;
+                        if (c + y <= k)
                         {
-                            dp[i][j + 1][next_cost] = max(dp[i][j + 1][next_cost], next_score);
+                            dp[i][j + 1][c + y] = max(dp[i][j + 1][c + y], dp[i][j][c] + x);
                         }
                     }
                 }
