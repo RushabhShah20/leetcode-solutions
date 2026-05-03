@@ -12,14 +12,8 @@ public:
         else
         {
             s = s + s;
-            if (s.find(goal) == s.npos)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            const bool ans = s.find(goal) == s.npos;
+            return ans;
         }
     }
 };
