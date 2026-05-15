@@ -9,7 +9,7 @@ public:
         int ans = 5001, l = 0, r = n - 1;
         while (l <= r)
         {
-            int m = l + (r - l) / 2;
+            const int m = l + (r - l) / 2;
             if (nums[l] <= nums[m])
             {
                 ans = min(ans, nums[l]);
