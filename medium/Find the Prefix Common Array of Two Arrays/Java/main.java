@@ -1,27 +1,24 @@
 // Problem: Find the Prefix Common Array of Two Arrays
 // Link to the problem: https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/
-class Solution
-{
-public:
-    vector<int> findThePrefixCommonArray(vector<int> &A, vector<int> &B)
-    {
-        const int n = A.size();
-        vector<int> m(n + 1, 0), ans(n);
+class Solution {
+    public int[] findThePrefixCommonArray(int[] A, int[] B) {
+        final int n = A.length;
+        int[] m = new int[n + 1], ans = new int[n];
+        for (int i = 0; i <= n; i++) {
+            m[i] = 0;
+        }
         int x = 0;
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             m[A[i]]++;
-            if (m[A[i]] == 2)
-            {
+            if (m[A[i]] == 2) {
                 x++;
             }
             m[B[i]]++;
-            if (m[B[i]] == 2)
-            {
+            if (m[B[i]] == 2) {
                 x++;
             }
             ans[i] = x;
         }
         return ans;
     }
-};
+}
