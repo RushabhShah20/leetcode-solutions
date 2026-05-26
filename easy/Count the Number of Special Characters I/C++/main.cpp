@@ -5,20 +5,22 @@ class Solution
 public:
     int numberOfSpecialChars(string word)
     {
+        const int n = word.size();
         int ans = 0;
         vector<int> lower(26, 0), upper(26, 0);
-        for (int i = 0; i < word.size(); i++)
+        for (int i = 0; i < n; i++)
         {
-            if (islower(word[i]))
+            const char c = word[i];
+            if (islower(c))
             {
-                lower[word[i] - 'a']++;
+                lower[c - 'a']++;
             }
             else
             {
-                upper[word[i] - 'A']++;
+                upper[c - 'A']++;
             }
         }
-        for (int i = 0; i < lower.size(); i++)
+        for (int i = 0; i < 26; i++)
         {
             if (lower[i] > 0 && upper[i] > 0)
             {
