@@ -5,20 +5,21 @@ class Solution
 public:
     vector<int> leftRightDifference(vector<int> &nums)
     {
-        vector<int> ans(nums.size()), left(nums.size()), right(nums.size());
+        const int n = nums.size();
+        vector<int> ans(n), left(n), right(n);
         int sum = 0;
-        for (int i = 0; i < nums.size(); i++)
+        for (int i = 0; i < n; i++)
         {
             left[i] = sum;
             sum += nums[i];
         }
         sum = 0;
-        for (int i = nums.size() - 1; i >= 0; i--)
+        for (int i = n - 1; i >= 0; i--)
         {
             right[i] = sum;
             sum += nums[i];
         }
-        for (int i = 0; i < nums.size(); i++)
+        for (int i = 0; i < n; i++)
         {
             ans[i] = abs(left[i] - right[i]);
         }
