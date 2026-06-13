@@ -5,17 +5,17 @@ class Solution
 public:
     string mapWordWeights(vector<string> &words, vector<int> &weights)
     {
+        const int n = words.size();
         string ans;
-        for (const string word : words)
+        for (int i = 0; i < n; i++)
         {
             int sum = 0;
-            for (const char c : word)
+            const int m = words[i].size();
+            for (int j = 0; j < m; j++)
             {
-                sum += weights[c - 'a'];
+                sum += weights[words[i][j] - 'a'];
             }
-            sum %= 26;
-            sum = 26 - sum;
-            ans += ('a' + sum - 1);
+            ans += 'z' - (sum % 26);
         }
         return ans;
     }
