@@ -5,32 +5,29 @@ class Solution
 public:
     string processStr(string s)
     {
+        const int n = s.size();
         string ans = "";
-        for (int i = 0; i < s.size(); i++)
+        for (int i = 0; i < n; i++)
         {
-            if (s[i] == '*')
+            const char c = s[i];
+            if (c == '*')
             {
-                if (ans.empty())
+                if (!ans.empty())
                 {
-                    continue;
-                }
-                else
-                {
-                    ans.erase(ans.end() - 1);
+                    ans.pop_back();
                 }
             }
-            else if (s[i] == '#')
+            else if (c == '#')
             {
-                string x = ans;
-                ans += x;
+                ans += ans;
             }
-            else if (s[i] == '%')
+            else if (c == '%')
             {
                 reverse(ans.begin(), ans.end());
             }
             else
             {
-                ans += s[i];
+                ans += c;
             }
         }
         return ans;
