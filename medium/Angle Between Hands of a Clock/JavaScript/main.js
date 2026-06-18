@@ -6,9 +6,9 @@
  * @return {number}
  */
 var angleClock = function (hour, minutes) {
-    let hour_angle = 0.5 * (hour * 60 + minutes);
-    let minute_angle = 6 * minutes;
-    let angle = Math.abs(hour_angle - minute_angle);
-    angle = Math.min(360 - angle, angle);
-    return angle;
+    const x = 0.5 * (hour * 60 + minutes);
+    const y = 6 * minutes;
+    const z = Math.abs(x - y);
+    const ans = Math.min(360 - z, z);
+    return ans;
 };

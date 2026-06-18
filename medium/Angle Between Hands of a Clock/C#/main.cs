@@ -4,10 +4,10 @@ public class Solution
 {
     public double AngleClock(int hour, int minutes)
     {
-        double hour_angle = 0.5 * (hour * 60 + minutes);
-        double minute_angle = 6 * minutes;
-        double angle = Math.Abs(hour_angle - minute_angle);
-        angle = Math.Min(360 - angle, angle);
-        return angle;
+        double x = 0.5 * (hour * 60 + minutes);
+        double y = 6 * minutes;
+        double z = Math.Abs(x - y);
+        double ans = Math.Min(360 - z, z);
+        return ans;
     }
 }
