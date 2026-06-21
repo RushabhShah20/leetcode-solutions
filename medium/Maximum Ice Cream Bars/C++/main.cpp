@@ -1,23 +1,35 @@
 // Problem: Maximum Ice Cream Bars
-// Link to the problem: https://leetcode.com/problems/maximum-ice-cream-bars
+// Link to the problem: https://leetcode.com/problems/maximum-ice-cream-bars/
 class Solution
 {
 public:
     int maxIceCream(vector<int> &costs, int coins)
     {
-        int ans = 0, sum = 0;
-        sort(costs.begin(), costs.end());
-        for (int i = 0; i < costs.size(); i++)
+        const int n = costs.size();
+        int mx = 0;
+        for (int i = 0; i < n; i++)
         {
-            sum += costs[i];
-            if (sum <= coins)
+            mx = max(mx, costs[i]);
+        }
+        vector<int> a(mx + 1, 0);
+        for (int i = 0; i < n; i++)
+        {
+            a[costs[i]]++;
+        }
+        int ans = 0;
+        for (int i = 1; i <= mx; i++)
+        {
+            if (a[i] == 0)
             {
-                ans++;
+                continue;
             }
-            else
+            if (coins < i)
             {
                 break;
             }
+            const int x = min(a[i], coins / i);
+            coins -= i * x;
+            ans += x;
         }
         return ans;
     }
