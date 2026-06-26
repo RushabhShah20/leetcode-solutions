@@ -1,25 +1,18 @@
 // Problem: Count Subarrays With Majority Element II
 // Link to the problem: https://leetcode.com/problems/count-subarrays-with-majority-element-ii/
-class Solution
-{
-public:
-    long long countMajoritySubarrays(vector<int> &nums, int target)
-    {
-        const int n = nums.size();
-        vector<int> pre(2 * n + 1, 0);
+class Solution {
+    public long countMajoritySubarrays(int[] nums, int target) {
+        final int n = nums.length;
+        int[] pre = new int[2 * n + 1];
         pre[n] = 1;
         int x = n;
-        long long ans = 0, y = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (nums[i] == target)
-            {
+        long ans = 0, y = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == target) {
                 y += pre[x];
                 x++;
                 pre[x]++;
-            }
-            else
-            {
+            } else {
                 x--;
                 y -= pre[x];
                 pre[x]++;
@@ -28,4 +21,4 @@ public:
         }
         return ans;
     }
-};
+}
