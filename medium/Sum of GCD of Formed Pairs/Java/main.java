@@ -1,31 +1,26 @@
 // Problem: Sum of GCD of Formed Pairs
 // Link to the problem: https://leetcode.com/problems/sum-of-gcd-of-formed-pairs/
-class Solution
-{
-public:
-    int gcd(const int a, const int b)
-    {
+class Solution {
+    public int gcd(final int a, final int b) {
         return b == 0 ? a : gcd(b, a % b);
     }
-    long long gcdSum(vector<int> &nums)
-    {
-        const int n = nums.size();
+
+    public long gcdSum(int[] nums) {
+        final int n = nums.length;
         int mx = 0;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++)
-        {
-            mx = max(mx, nums[i]);
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            mx = Math.max(mx, nums[i]);
             a[i] = gcd(mx, nums[i]);
         }
-        long long ans = 0;
-        sort(a.begin(), a.end());
+        long ans = 0;
+        Arrays.sort(a);
         int l = 0, r = n - 1;
-        while (l < r)
-        {
+        while (l < r) {
             ans += gcd(a[l], a[r]);
             l++;
             r--;
         }
         return ans;
     }
-};
+}
