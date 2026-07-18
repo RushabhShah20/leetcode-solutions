@@ -8,12 +8,13 @@ func gcd(a int, b int) int {
 	}
 }
 func findGCD(nums []int) int {
-	var maxVal int = 0
-	var minVal int = 1001
-	for _, num := range nums {
-		maxVal = max(maxVal, num)
-		minVal = min(minVal, num)
+	var n int = len(nums)
+	var mx int = 0
+	var mn int = 1001
+	for i := 0; i < n; i++ {
+		mx = max(mx, nums[i])
+		mn = min(mn, nums[i])
 	}
-	var ans int = gcd(maxVal, minVal)
+	var ans int = gcd(mx, mn)
 	return ans
 }

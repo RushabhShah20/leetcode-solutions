@@ -8,11 +8,12 @@ var gcd = function (a, b) {
     return b === 0 ? a : gcd(b, a % b);
 };
 var findGCD = function (nums) {
-    let maxVal = 0, minVal = 1001;
-    for (const num of nums) {
-        maxVal = Math.max(maxVal, num);
-        minVal = Math.min(minVal, num);
+    const n = nums.length;
+    let mx = 0, mn = 1001;
+    for (let i = 0; i < n; i++) {
+        mx = Math.max(mx, nums[i]);
+        mn = Math.min(mn, nums[i]);
     }
-    const ans = gcd(maxVal, minVal);
+    const ans = gcd(mx, mn);
     return ans;
 };

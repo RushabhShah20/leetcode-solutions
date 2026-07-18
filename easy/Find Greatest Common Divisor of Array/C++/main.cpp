@@ -9,13 +9,14 @@ public:
     }
     int findGCD(vector<int> &nums)
     {
-        int maxVal = 0, minVal = 1001;
-        for (const int &num : nums)
+        const int n = nums.size();
+        int mx = 0, mn = 1001;
+        for (int i = 0; i < n; i++)
         {
-            maxVal = max(maxVal, num);
-            minVal = min(minVal, num);
+            mx = max(mx, nums[i]);
+            mn = min(mn, nums[i]);
         }
-        const int ans = gcd(maxVal, minVal);
+        const int ans = gcd(mx, mn);
         return ans;
     }
 };

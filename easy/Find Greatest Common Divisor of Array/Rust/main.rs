@@ -9,13 +9,14 @@ impl Solution {
         }
     }
     pub fn find_gcd(nums: Vec<i32>) -> i32 {
-        let mut maxVal: i32 = 0;
-        let mut minVal: i32 = 1001;
-        for num in nums {
-            maxVal = maxVal.max(num);
-            minVal = minVal.min(num);
+        let n: usize = nums.len();
+        let mut mx: i32 = 0;
+        let mut mn: i32 = 1001;
+        for i in 0..n {
+            mx = mx.max(nums[i]);
+            mn = mn.min(nums[i]);
         }
-        let ans: i32 = Self::gcd(maxVal, minVal);
+        let ans: i32 = Self::gcd(mx, mn);
         return ans;
     }
 }

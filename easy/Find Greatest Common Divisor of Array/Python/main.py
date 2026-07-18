@@ -5,10 +5,11 @@ class Solution:
         return a if b == 0 else self.gcd(b, a % b)
 
     def findGCD(self, nums: List[int]) -> int:
-        maxVal: int = 0
-        minVal: int = 1001
-        for num in nums:
-            maxVal = max(maxVal, num)
-            minVal = min(minVal, num)
-        ans: int = self.gcd(maxVal, minVal)
+        n: int = len(nums)
+        mx: int = 0
+        mn: int = 1001
+        for i in range(0, n):
+            mx = max(mx, nums[i])
+            mn = min(mn, nums[i])
+        ans: int = self.gcd(mx, mn)
         return ans

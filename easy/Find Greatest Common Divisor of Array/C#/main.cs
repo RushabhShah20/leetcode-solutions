@@ -8,13 +8,13 @@ public class Solution
     }
     public int FindGCD(int[] nums)
     {
-        int maxVal = 0, minVal = 1001;
-        foreach (int num in nums)
+        int n = nums.Length, mx = 0, mn = 1001;
+        for (int i = 0; i < n; i++)
         {
-            maxVal = Math.Max(maxVal, num);
-            minVal = Math.Min(minVal, num);
+            mx = Math.Max(mx, nums[i]);
+            mn = Math.Min(mn, nums[i]);
         }
-        int ans = gcd(maxVal, minVal);
+        int ans = gcd(mx, mn);
         return ans;
     }
 }

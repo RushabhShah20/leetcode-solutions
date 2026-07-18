@@ -6,12 +6,13 @@ class Solution {
     }
 
     public int findGCD(int[] nums) {
-        int maxVal = 0, minVal = 1001;
-        for (final int num : nums) {
-            maxVal = Math.max(maxVal, num);
-            minVal = Math.min(minVal, num);
+        final int n = nums.length;
+        int mx = 0, mn = 1001;
+        for (int i = 0; i < n; i++) {
+            mx = Math.max(mx, nums[i]);
+            mn = Math.min(mn, nums[i]);
         }
-        final int ans = gcd(maxVal, minVal);
+        final int ans = gcd(mx, mn);
         return ans;
     }
 }

@@ -6,12 +6,13 @@ int gcd(int a, int b)
 }
 int findGCD(int *nums, int numsSize)
 {
-    int maxVal = 0, minVal = 1001;
-    for (int i = 0; i < numsSize; i++)
+    const int n = numsSize;
+    int mx = 0, mn = 1001;
+    for (int i = 0; i < n; i++)
     {
-        maxVal = fmax(maxVal, nums[i]);
-        minVal = fmin(minVal, nums[i]);
+        mx = max(mx, nums[i]);
+        mn = min(mn, nums[i]);
     }
-    const int ans = gcd(maxVal, minVal);
+    const int ans = gcd(mx, mn);
     return ans;
 }
