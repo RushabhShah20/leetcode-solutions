@@ -2,13 +2,14 @@
 # Link to the problem: https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
+        n: int = len(nums)
         x: int = 0
         y: int = 0
-        for num in nums:
-            if num > x:
+        for i in range(0, n):
+            if nums[i] > x:
                 y = x
-                x = num
-            elif num > y:
-                y = num
+                x = nums[i]
+            elif nums[i] > y:
+                y = nums[i]
         ans: int = (x - 1) * (y - 1)
         return ans

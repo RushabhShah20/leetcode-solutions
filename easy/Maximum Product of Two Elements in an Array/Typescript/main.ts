@@ -1,14 +1,15 @@
 // Problem: Maximum Product of Two Elements in an Array
 // Link to the problem: https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
 function maxProduct(nums: number[]): number {
+    const n: number = nums.length;
     let x: number = 0, y: number = 0;
-    for (const num of nums) {
-        if (num > x) {
+    for (let i = 0; i < n; i++) {
+        if (nums[i] > x) {
             y = x;
-            x = num;
+            x = nums[i];
         }
-        else if (num > y) {
-            y = num;
+        else if (nums[i] > y) {
+            y = nums[i];
         }
     }
     const ans: number = (x - 1) * (y - 1);

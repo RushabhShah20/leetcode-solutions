@@ -2,8 +2,9 @@
 // Link to the problem: https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
 int maxProduct(int *nums, int numsSize)
 {
+    const int n = numsSize;
     int x = 0, y = 0;
-    for (int i = 0; i < numsSize; i++)
+    for (int i = 0; i < n; i++)
     {
         if (nums[i] > x)
         {

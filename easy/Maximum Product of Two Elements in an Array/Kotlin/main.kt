@@ -1,10 +1,11 @@
 // Problem: Maximum Product of Two Elements in an Array
 // Link to the problem: https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
 class Solution {
-    public int maxProduct(int[] nums) {
-        final int n = nums.length;
-        int x = 0, y = 0;
-        for (int i = 0; i < n; i++) {
+    fun maxProduct(nums: IntArray): Int {
+        val n: Int = nums.size;
+        var x: Int = 0;
+        var y: Int = 0;
+        for (i in 0 until n) {
             if (nums[i] > x) {
                 y = x;
                 x = nums[i];
@@ -12,7 +13,7 @@ class Solution {
                 y = nums[i];
             }
         }
-        final int ans = (x - 1) * (y - 1);
+        val ans: Int = (x - 1) * (y - 1);
         return ans;
     }
 }

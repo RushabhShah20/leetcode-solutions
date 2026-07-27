@@ -5,17 +5,18 @@ class Solution
 public:
     int maxProduct(vector<int> &nums)
     {
+        const int n = nums.size();
         int x = 0, y = 0;
-        for (const int num : nums)
+        for (int i = 0; i < n; i++)
         {
-            if (num > x)
+            if (nums[i] > x)
             {
                 y = x;
-                x = num;
+                x = nums[i];
             }
-            else if (num > y)
+            else if (nums[i] > y)
             {
-                y = num;
+                y = nums[i];
             }
         }
         const int ans = (x - 1) * (y - 1);

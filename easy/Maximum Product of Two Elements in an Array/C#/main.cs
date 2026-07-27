@@ -4,17 +4,18 @@ public class Solution
 {
     public int MaxProduct(int[] nums)
     {
+        int n = nums.Length;
         int x = 0, y = 0;
-        foreach (int num in nums)
+        for (int i = 0; i < n; i++)
         {
-            if (num > x)
+            if (nums[i] > x)
             {
                 y = x;
-                x = num;
+                x = nums[i];
             }
-            else if (num > y)
+            else if (nums[i] > y)
             {
-                y = num;
+                y = nums[i];
             }
         }
         int ans = (x - 1) * (y - 1);

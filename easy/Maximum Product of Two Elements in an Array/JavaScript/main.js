@@ -5,14 +5,15 @@
  * @return {number}
  */
 var maxProduct = function (nums) {
+    const n = nums.length;
     let x = 0, y = 0;
-    for (const num of nums) {
-        if (num > x) {
+    for (let i = 0; i < n; i++) {
+        if (nums[i] > x) {
             y = x;
-            x = num;
+            x = nums[i];
         }
-        else if (num > y) {
-            y = num;
+        else if (nums[i] > y) {
+            y = nums[i];
         }
     }
     const ans = (x - 1) * (y - 1);
