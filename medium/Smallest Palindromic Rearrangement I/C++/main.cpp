@@ -5,14 +5,25 @@ class Solution
 public:
     string smallestPalindrome(string s)
     {
-        string ans = s;
-        if (s.size() <= 1)
+        const int n = s.size();
+        vector<int> a(26, 0);
+        for (int i = 0; i < n / 2; i++)
         {
-            return s;
+            a[s[i] - 'a']++;
         }
-        int mid = s.size() / 2;
-        sort(ans.begin(), ans.begin() + mid);
-        sort(ans.end() - mid, ans.end(), greater<char>());
-        return ans;
+        int l = 0, r = n - 1;
+        for (int i = 0; i < 26; i++)
+        {
+            while (a[i] > 0)
+            {
+                const char c = 'a' + i;
+                s[l] = c;
+                s[r] = c;
+                l++;
+                r--;
+                a[i]--;
+            }
+        }
+        return s;
     }
 };
