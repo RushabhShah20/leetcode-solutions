@@ -5,30 +5,31 @@ class Solution
 public:
     int minimumPushes(string word)
     {
-        vector<int> freq(26, 0);
-        for (const char c : word)
+        const int n = word.size();
+        vector<int> a(26, 0);
+        for (int i = 0; i < n; i++)
         {
-            freq[c - 'a']++;
+            a[word[i] - 'a']++;
         }
-        sort(freq.begin(), freq.end(), greater<int>());
+        sort(a.begin(), a.end(), greater<int>());
         int ans = 0;
         for (int i = 0; i < 26; i++)
         {
             if (i < 8)
             {
-                ans += (1 * freq[i]);
+                ans += (1 * a[i]);
             }
             else if (i >= 8 && i < 16)
             {
-                ans += (2 * freq[i]);
+                ans += (2 * a[i]);
             }
             else if (i >= 16 && i < 24)
             {
-                ans += (3 * freq[i]);
+                ans += (3 * a[i]);
             }
             else
             {
-                ans += (4 * freq[i]);
+                ans += (4 * a[i]);
             }
         }
         return ans;
