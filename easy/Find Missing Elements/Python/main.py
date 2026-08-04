@@ -2,11 +2,18 @@
 # Link to the problem: https://leetcode.com/problems/find-missing-elements/
 class Solution:
     def findMissingElements(self, nums: List[int]) -> List[int]:
-        s: SortedSet[int] = SortedSet([])
-        for num in nums:
-            s.add(num)
+        n: int = len(nums)
+        mn: int = 101
+        mx: int = 1
+        for i in range(0, n):
+            mn = min(mn, nums[i])
+            mx = max(mx, nums[i])
+        m: int = mx - mn + 1
+        a: List[int] = [0] * m
+        for i in range(0, n):
+            a[nums[i] - mn] += 1
         ans: List[int] = []
-        for i in range(s[0], s[len(nums) - 1]):
-            if i not in s:
-                ans.append(i)
+        for i in range(0, m):
+            if a[i] == 0:
+                ans.append(i + mn)
         return ans
