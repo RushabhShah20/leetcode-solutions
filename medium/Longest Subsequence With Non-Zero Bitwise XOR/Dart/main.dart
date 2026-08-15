@@ -2,24 +2,19 @@
 // Link to the problem: https://leetcode.com/problems/longest-subsequence-with-non-zero-bitwise-xor/
 class Solution {
   int longestSubsequence(List<int> nums) {
-    int n = nums.length;
-    int z = 0;
-    for (int num in nums) {
-      z ^= num;
-    }
-    if (z != 0) {
-      return n;
-    }
-    bool x = true;
-    for (int num in nums) {
-      if (num != 0) {
-        x = false;
-        break;
+    final int n = nums.length;
+    int x = 0;
+    bool y = true;
+    for (int i = 0; i < n; i++) {
+      x ^= nums[i];
+      if (nums[i] > 0) {
+        y = false;
       }
     }
-    if (x) {
-      return 0;
+    if (x > 0) {
+      return n;
     }
-    return n - 1;
+    final int ans = y ? 0 : n - 1;
+    return ans;
   }
 }

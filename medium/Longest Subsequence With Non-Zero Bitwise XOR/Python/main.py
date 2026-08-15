@@ -3,16 +3,13 @@
 class Solution:
     def longestSubsequence(self, nums: List[int]) -> int:
         n: int = len(nums)
-        z: int = 0
+        x: int = 0
+        y: bool = True
         for i in range(0, n):
-            z ^= nums[i]
-        if z != 0:
+            x ^= nums[i]
+            if nums[i] > 0:
+                y = False
+        if x > 0:
             return n
-        x: bool = True
-        for i in range(0, n):
-            if nums[i] != 0:
-                x = False
-                break
-        if x:
-            return 0
-        return n - 1
+        ans: int = 0 if y else n - 1
+        return ans

@@ -4,29 +4,21 @@ public class Solution
 {
     public int LongestSubsequence(int[] nums)
     {
-        int n = nums.Length;
-        int z = 0;
-        foreach (int num in nums)
+        int n = nums.Length, x = 0;
+        bool y = true;
+        for (int i = 0; i < n; i++)
         {
-            z ^= num;
+            x ^= nums[i];
+            if (nums[i] > 0)
+            {
+                y = false;
+            }
         }
-        if (z != 0)
+        if (x > 0)
         {
             return n;
         }
-        bool x = true;
-        foreach (int num in nums)
-        {
-            if (num != 0)
-            {
-                x = false;
-                break;
-            }
-        }
-        if (x)
-        {
-            return 0;
-        }
-        return n - 1;
+        int ans = y ? 0 : n - 1;
+        return ans;
     }
 }

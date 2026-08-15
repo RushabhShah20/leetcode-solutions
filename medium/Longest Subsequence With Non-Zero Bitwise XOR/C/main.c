@@ -2,27 +2,21 @@
 // Link to the problem: https://leetcode.com/problems/longest-subsequence-with-non-zero-bitwise-xor/
 int longestSubsequence(int *nums, int numsSize)
 {
-    int z = 0;
-    for (int i = 0; i < numsSize; i++)
+    const int n = numsSize;
+    int x = 0;
+    bool y = true;
+    for (int i = 0; i < n; i++)
     {
-        z ^= nums[i];
-    }
-    if (z != 0)
-    {
-        return numsSize;
-    }
-    bool x = true;
-    for (int i = 0; i < numsSize; i++)
-    {
-        if (nums[i] != 0)
+        x ^= nums[i];
+        if (nums[i] > 0)
         {
-            x = false;
-            break;
+            y = false;
         }
     }
-    if (x)
+    if (x > 0)
     {
-        return 0;
+        return n;
     }
-    return numsSize - 1;
+    const int ans = y ? 0 : n - 1;
+    return ans;
 }

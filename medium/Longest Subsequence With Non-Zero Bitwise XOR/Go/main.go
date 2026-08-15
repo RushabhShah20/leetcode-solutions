@@ -2,22 +2,20 @@
 // Link to the problem: https://leetcode.com/problems/longest-subsequence-with-non-zero-bitwise-xor/
 func longestSubsequence(nums []int) int {
 	var n int = len(nums)
-	var z int = 0
-	for _, num := range nums {
-		z ^= num
-	}
-	if z != 0 {
-		return n
-	}
-	var x bool = true
-	for _, num := range nums {
-		if num != 0 {
-			x = false
-			break
+	var x int = 0
+	var y bool = true
+	for i := 0; i < n; i++ {
+		x ^= nums[i]
+		if nums[i] > 0 {
+			y = false
 		}
 	}
-	if x {
-		return 0
+	if x > 0 {
+		return n
 	}
-	return n - 1
+	if y {
+		return 0
+	} else {
+		return n - 1
+	}
 }

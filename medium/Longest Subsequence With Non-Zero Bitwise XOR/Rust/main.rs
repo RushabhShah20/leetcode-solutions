@@ -3,23 +3,18 @@
 impl Solution {
     pub fn longest_subsequence(nums: Vec<i32>) -> i32 {
         let n: usize = nums.len();
-        let mut z: i32 = 0;
-        for num in nums.clone().into_iter() {
-            z ^= num;
-        }
-        if (z != 0) {
-            return (n as i32);
-        }
-        let mut x: bool = true;
-        for num in nums.clone().into_iter() {
-            if (num != 0) {
-                x = false;
-                break;
+        let mut x: i32 = 0;
+        let mut y: bool = true;
+        for i in 0..n {
+            x ^= nums[i];
+            if (nums[i] > 0) {
+                y = false;
             }
         }
-        if (x) {
-            return 0;
+        if (x > 0) {
+            return n;
         }
-        return (n - 1) as i32;
+        let ans: i32 = if (y) { 0 } else { n - 1 };
+        return ans;
     }
 }

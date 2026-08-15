@@ -1,23 +1,18 @@
 // Problem: Longest Subsequence With Non-Zero Bitwise XOR
 // Link to the problem: https://leetcode.com/problems/longest-subsequence-with-non-zero-bitwise-xor/
 function longestSubsequence(nums: number[]): number {
-    let n: number = nums.length;
-    let z: number = 0;
-    for (let num of nums) {
-        z ^= num;
-    }
-    if (z != 0) {
-        return n;
-    }
-    let x: boolean = true;
-    for (let num of nums) {
-        if (num !== 0) {
-            x = false;
-            break;
+    const n: number = nums.length;
+    let x: number = 0;
+    let y: boolean = true;
+    for (let i = 0; i < n; i++) {
+        x ^= nums[i];
+        if (nums[i] > 0) {
+            y = false;
         }
     }
-    if (x) {
-        return 0;
+    if (x > 0) {
+        return n;
     }
-    return n - 1;
+    const ans: number = y ? 0 : n - 1;
+    return ans;
 };

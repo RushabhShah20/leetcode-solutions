@@ -5,23 +5,18 @@
  * @return {number}
  */
 var longestSubsequence = function (nums) {
-    let n = nums.length;
-    let z = 0;
-    for (let num of nums) {
-        z ^= num;
-    }
-    if (z != 0) {
-        return n;
-    }
-    let x = true;
-    for (let num of nums) {
-        if (num !== 0) {
-            x = false;
-            break;
+    const n = nums.length;
+    let x = 0;
+    let y = true;
+    for (let i = 0; i < n; i++) {
+        x ^= nums[i];
+        if (nums[i] > 0) {
+            y = false;
         }
     }
-    if (x) {
-        return 0;
+    if (x > 0) {
+        return n;
     }
-    return n - 1;
+    const ans = y ? 0 : n - 1;
+    return ans;
 };

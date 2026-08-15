@@ -5,29 +5,22 @@ class Solution
 public:
     int longestSubsequence(vector<int> &nums)
     {
-        int n = nums.size();
-        int z = 0;
-        for (int num : nums)
+        const int n = nums.size();
+        int x = 0;
+        bool y = true;
+        for (int i = 0; i < n; i++)
         {
-            z ^= num;
+            x ^= nums[i];
+            if (nums[i] > 0)
+            {
+                y = false;
+            }
         }
-        if (z != 0)
+        if (x > 0)
         {
             return n;
         }
-        bool x = true;
-        for (int num : nums)
-        {
-            if (num != 0)
-            {
-                x = false;
-                break;
-            }
-        }
-        if (x)
-        {
-            return 0;
-        }
-        return n - 1;
+        const int ans = y ? 0 : n - 1;
+        return ans;
     }
 };
