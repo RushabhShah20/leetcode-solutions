@@ -5,15 +5,16 @@ class Solution
 public:
     bool stoneGameIX(vector<int> &stones)
     {
-        bool ans = true;
+        const int n = stones.size();
         int a = 0, b = 0, c = 0;
-        for (const int &stone : stones)
+        for (int i = 0; i < n; i++)
         {
-            if (stone % 3 == 1)
+            const int x = stones[i] % 3;
+            if (x  == 1)
             {
                 b++;
             }
-            else if (stone % 3 == 2)
+            else if (x  == 2)
             {
                 c++;
             }
@@ -22,27 +23,7 @@ public:
                 a++;
             }
         }
-        if (min(b, c) == 0)
-        {
-            if (max(b, c) > 2 && a % 2 > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            if (abs(b - c) > 2 || a % 2 == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        const bool ans = a & 1 ? abs(b - c) > 2 : b >= 1 && c >= 1;
+        return ans;
     }
 };
