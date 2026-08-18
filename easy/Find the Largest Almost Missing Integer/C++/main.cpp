@@ -5,31 +5,40 @@ class Solution
 public:
     int largestInteger(vector<int> &nums, int k)
     {
-        map<int, int> m;
-        int n = nums.size();
-        for (int i = 0; i < nums.size() - k + 1; i++)
+        const int n = nums.size();
+        int ans = -1;
+        if (n == k)
         {
-            set<int> s(nums.begin() + i, nums.begin() + i + k);
-            for (int i : s)
+            for (int i = 0; i < n; i++)
             {
-                m[i]++;
+                ans = max(ans, nums[i]);
             }
+            return ans;
         }
-        set<int> a;
-        for (pair<int, int> i : m)
+        vector<int> a(51);
+        for (int i = 0; i < n; i++)
         {
-            if (i.second == 1)
+            a[nums[i]]++;
+        }
+        if (k == 1)
+        {
+            for (int i = 50; i >= 0; i--)
             {
-                a.insert(i.first);
+                if (a[i] == 1)
+                {
+                    return i;
+                }
             }
-        }
-        if (a.empty())
-        {
             return -1;
         }
-        else
+        if (a[nums[0]] == 1)
         {
-            return *a.rbegin();
+            ans = max(ans, nums[0]);
         }
+        if (a[nums[n - 1]] == 1)
+        {
+            ans = max(ans, nums[n - 1]);
+        }
+        return ans;
     }
 };
