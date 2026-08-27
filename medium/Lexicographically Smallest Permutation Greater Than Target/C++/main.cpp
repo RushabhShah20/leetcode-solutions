@@ -3,56 +3,49 @@
 class Solution
 {
 public:
+    string get(const vector<int> &a)
+    {
+        string ans;
+        for (int i = 0; i < 26; i++)
+        {
+            ans.append(a[i], 'a' + i);
+        }
+        return ans;
+    }
     string lexGreaterPermutation(string s, string target)
     {
-        vector<int> freq(26, 0);
-        for (char c : s)
-            freq[c - 'a']++;
-        int n = s.size();
-        string ans = "";
-        for (int pos = 0; pos < n; pos++)
+        const int n = s.size();
+        vector<int> a(26, 0);
+        for (int i = 0; i < n; i++)
         {
-            for (int i = 0; i < 26; i++)
+            a[s[i] - 'a']++;
+            a[target[i] - 'a']--;
+        }
+        for (int i = n - 1; i >= 0; i--)
+        {
+            const int x = target[i] - 'a';
+            a[x]++;
+            int mn = INT_MAX;
+            for (int j = 0; j < 26; j++)
             {
-                freq[i] = 0;
+                mn = min(mn, a[j]);
             }
-            for (char c : s)
-            {
-                freq[c - 'a']++;
-            }
-            string prefix = target.substr(0, pos);
-            bool ok = true;
-            for (char c : prefix)
-            {
-                if (freq[c - 'a'] == 0)
-                {
-                    ok = false;
-                    break;
-                }
-                freq[c - 'a']--;
-            }
-            if (!ok)
+            if (mn < 0)
             {
                 continue;
             }
-            for (int c = target[pos] - 'a' + 1; c < 26; c++)
+            for (int j = x + 1; j < 26; j++)
             {
-                if (freq[c] > 0)
+                if (a[j]>0)
                 {
-                    string res = prefix;
-                    res.push_back(char('a' + c));
-                    freq[c]--;
-                    for (int k = 0; k < 26; k++)
-                    {
-                        res.append(freq[k], char('a' + k));
-                    }
-                    if (res > target)
-                    {
-                        ans = ans.empty() ? res : min(ans, res);
-                    }
+                    a[j]--;
+                    target[i] = 'a' + j;
+                    target.resize(i + 1);
+                    const string ans = target + get(a);
+                    return ans;
                 }
             }
         }
-        return ans;
+        return "";
     }
 };
