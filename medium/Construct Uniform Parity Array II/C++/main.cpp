@@ -5,23 +5,19 @@ class Solution
 public:
     bool uniformArray(vector<int> &nums1)
     {
+        const int n = nums1.size();
         bool x = true;
-        int mn = INT_MAX;
-        for (const int num : nums1)
+        int mn = 1000000001;
+        for (int i = 0; i < n; i++)
         {
-            if (num % 2 != 0)
+            const int num = nums1[i];
+            if (num & 1)
             {
                 x = false;
             }
             mn = min(mn, num);
         }
-        if (mn % 2 != 0 || x)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        const bool ans = mn & 1 || x ? true : false;
+        return ans;
     }
 };
