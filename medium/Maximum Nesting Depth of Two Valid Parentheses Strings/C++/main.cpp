@@ -6,20 +6,10 @@ public:
     vector<int> maxDepthAfterSplit(string seq)
     {
         const int n = seq.size();
-        vector<int> ans(n, 0);
-        int x = 0;
+        vector<int> ans(n);
         for (int i = 0; i < n; i++)
         {
-            if (seq[i] == '(')
-            {
-                ans[i] = x % 2;
-                x++;
-            }
-            else
-            {
-                x--;
-                ans[i] = x % 2;
-            }
+            ans[i] = (i & 1) ^ (seq[i] == '(');
         }
         return ans;
     }
