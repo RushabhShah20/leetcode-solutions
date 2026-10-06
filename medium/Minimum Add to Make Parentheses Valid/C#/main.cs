@@ -4,27 +4,19 @@ public class Solution
 {
     public int MinAddToMakeValid(string s)
     {
-        int ans = 0;
-        Stack<char> st = new Stack<char>();
-        foreach (char c in s)
+        int n = s.Length, x = 0, y = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (st.Count == 0)
+            if (s[i] == '(')
             {
-                st.Push(c);
+                x++;
             }
             else
             {
-                if (st.Peek() == '(' && c == ')')
-                {
-                    st.Pop();
-                }
-                else
-                {
-                    st.Push(c);
-                }
+                if (x > 0) { x--; } else { y++; }
             }
         }
-        ans = st.Count;
+        const int ans = x + y;
         return ans;
     }
 }

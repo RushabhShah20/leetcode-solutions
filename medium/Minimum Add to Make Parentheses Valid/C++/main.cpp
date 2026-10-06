@@ -5,27 +5,27 @@ class Solution
 public:
     int minAddToMakeValid(string s)
     {
-        int ans = 0;
-        stack<char> st;
-        for (char c : s)
+        const int n = s.size();
+        int x = 0, y = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (st.empty())
+            if (s[i] == '(')
             {
-                st.push(c);
+                x++;
             }
             else
             {
-                if (st.top() == '(' && c == ')')
+                if (x > 0)
                 {
-                    st.pop();
+                    x--;
                 }
                 else
                 {
-                    st.push(c);
+                    y++;
                 }
             }
         }
-        ans = st.size();
+        const int ans = x + y;
         return ans;
     }
 };
