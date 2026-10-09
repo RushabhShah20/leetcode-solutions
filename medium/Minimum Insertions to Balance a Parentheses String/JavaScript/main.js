@@ -1,0 +1,30 @@
+// Problem: Minimum Insertions to Balance a Parentheses String
+// Link to the problem: https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minInsertions = function (s) {
+    const n = s.length;
+    let ans = 0, x = 0;
+    for (let i = 0; i < n; i++) {
+        if (s[i] === '(') {
+            if ((x & 1) === 1) {
+                ans++;
+                x++;
+            }
+            else {
+                x += 2;
+            }
+        }
+        else if (x === 0) {
+            ans++;
+            x = 1;
+        }
+        else {
+            x--;
+        }
+    }
+    ans += x;
+    return ans;
+};
