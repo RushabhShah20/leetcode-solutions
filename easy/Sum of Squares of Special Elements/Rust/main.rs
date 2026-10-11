@@ -2,12 +2,18 @@
 // Link to the problem: https://leetcode.com/problems/sum-of-squares-of-special-elements/
 impl Solution {
     pub fn sum_of_squares(nums: Vec<i32>) -> i32 {
+        let n: usize = nums.len();
         let mut ans: i32 = 0;
-        for i in 0..nums.len() {
-            if (nums.len() % (i + 1) == 0) {
-                ans += (nums[i] * nums[i]);
+        let mut i: usize = 1;
+        while (i * i <= n) {
+            if (n % i == 0) {
+                ans += nums[i - 1] * nums[i - 1];
+                if (i * i != n) {
+                    ans += nums[n / i - 1] * nums[n / i - 1];
+                }
             }
+            i += 1;
         }
-        ans
+        return ans;
     }
 }

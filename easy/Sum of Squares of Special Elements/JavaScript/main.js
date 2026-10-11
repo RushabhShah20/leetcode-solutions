@@ -5,10 +5,14 @@
  * @return {number}
  */
 var sumOfSquares = function (nums) {
+    const n = nums.length;
     let ans = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if (nums.length % (i + 1) == 0) {
-            ans += nums[i] * nums[i];
+    for (let i = 1; i * i <= n; i++) {
+        if (n % i === 0) {
+            ans += nums[i - 1] * nums[i - 1];
+            if (i * i !== n) {
+                ans += nums[n / i - 1] * nums[n / i - 1];
+            }
         }
     }
     return ans;
