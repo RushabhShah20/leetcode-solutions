@@ -5,19 +5,22 @@ class Solution
 public:
     long long maxAlternatingSum(vector<int> &nums)
     {
+        const int n = nums.size();
         long long ans = 0;
-        sort(nums.begin(), nums.end(), [](const int &a, const int &b)
-             { return abs(a) < abs(b); });
-        int n = nums.size();
         for (int i = 0; i < n; i++)
         {
-            if (i < n / 2)
+            nums[i] *= nums[i];
+        }
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < n; i++)
+        {
+            if (i < (n >> 1))
             {
-                ans -= ((long long)(nums[i]) * (long long)(nums[i]));
+                ans -= nums[i] * nums[i];
             }
             else
             {
-                ans += ((long long)(nums[i]) * (long long)(nums[i]));
+                ans += nums[i] * nums[i];
             }
         }
         return ans;
