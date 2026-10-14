@@ -5,28 +5,20 @@ class Solution
 public:
     string maxSumOfSquares(int num, int sum)
     {
-        string ans;
-        while (sum > 0)
-        {
-            if (sum > 9)
-            {
-                sum -= 9;
-                ans.append(1, '9');
-            }
-            else
-            {
-                ans.append(1, sum + '0');
-                sum = 0;
-            }
-        }
-        if (ans.length() > num)
+        if (sum < 1 || sum > 9 * num)
         {
             return "";
         }
-        else
+        string ans;
+        const int x = sum / 9, y = sum % 9;
+        ans.append(x, '9');
+        num -= x;
+        if (y > 0)
         {
-            ans.append(num - ans.size(), '0');
-            return ans;
+            ans.append(1, y + '0');
+            num--;
         }
+        ans.append(num, '0');
+        return ans;
     }
 };
