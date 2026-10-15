@@ -5,15 +5,15 @@ class Solution
 public:
     int sumCounts(vector<int> &nums)
     {
+        const int n = nums.size();
         int ans = 0;
-        for (auto it = nums.begin(); it != nums.end(); it++)
+        for (int i = 0; i < n; i++)
         {
-            for (auto jt = it; jt != nums.end(); jt++)
+            unordered_set<int> s;
+            for (int j = i; j < n; j++)
             {
-                set<int> s(it, jt + 1);
-                int n = s.size();
-                int x = n * n;
-                ans += x;
+                s.insert(nums[j]);
+                ans += s.size() * s.size();
             }
         }
         return ans;
