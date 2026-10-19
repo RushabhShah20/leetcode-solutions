@@ -5,14 +5,23 @@ class Solution
 public:
     vector<int> targetIndices(vector<int> &nums, int target)
     {
-        sort(nums.begin(), nums.end());
-        vector<int> ans;
-        for (int i = 0; i < nums.size(); i++)
+        const int n = nums.size();
+        int x = 0, y = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (nums[i] == target)
+            if (nums[i] < target)
             {
-                ans.push_back(i);
+                x++;
             }
+            else if (nums[i] == target)
+            {
+                y++;
+            }
+        }
+        vector<int> ans;
+        for (int i = x; i < x + y; i++)
+        {
+            ans.push_back(i);
         }
         return ans;
     }
