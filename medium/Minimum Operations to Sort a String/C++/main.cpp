@@ -6,57 +6,42 @@ public:
     int minOperations(string s)
     {
         const int n = s.size();
-        if (n < 2)
+        char mn = 'z', mx = 'a';
+        bool a = true;
+        for (int i = 0; i < n; i++)
         {
-            return 0;
-        }
-        bool x = true;
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] > s[i + 1])
+            if (mx < s[i])
             {
-                x = false;
-                break;
+                mx = s[i];
+            }
+            if (mn > s[i])
+            {
+                mn = s[i];
+            }
+            if (i > 0 && s[i - 1] > s[i])
+            {
+                a = false;
             }
         }
-        if (x)
+        if (a)
         {
             return 0;
         }
-        char mx = s[0], mn = s[0];
-        for (int i = 1; i < n; i++)
+        if (n == 2)
         {
-            mn = min(mn, s[i]);
-            mx = max(mx, s[i]);
+            return -1;
         }
-        if (mn == s[0] || mx == s[n - 1])
+        if (s[0] == mn || s[n - 1] == mx)
         {
             return 1;
         }
-        if (mx == s[0] && mn == s[n - 1])
+        for (int i = 1; i < n - 1; i++)
         {
-            if (n == 2)
-            {
-                return -1;
-            }
-            bool y = false;
-            for (int i = 1; i < n - 1; i++)
-            {
-                if (s[i] == mn || s[i] == mx)
-                {
-                    y = true;
-                    break;
-                }
-            }
-            if (y)
+            if (s[i] == mn || s[i] == mx)
             {
                 return 2;
             }
-            else
-            {
-                return 3;
-            }
         }
-        return 2;
+        return 3;
     }
 };
