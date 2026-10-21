@@ -1,0 +1,43 @@
+// Problem: Minimum Operations to Sort a String
+// Link to the problem: https://leetcode.com/problems/minimum-operations-to-sort-a-string/
+int minOperations(char *s)
+{
+    const int n = strlen(s);
+    char mn = 'z', mx = 'a';
+    bool a = true;
+    for (int i = 0; i < n; i++)
+    {
+        if (mx < s[i])
+        {
+            mx = s[i];
+        }
+        if (mn > s[i])
+        {
+            mn = s[i];
+        }
+        if (i > 0 && s[i - 1] > s[i])
+        {
+            a = false;
+        }
+    }
+    if (a)
+    {
+        return 0;
+    }
+    if (n == 2)
+    {
+        return -1;
+    }
+    if (s[0] == mn || s[n - 1] == mx)
+    {
+        return 1;
+    }
+    for (int i = 1; i < n - 1; i++)
+    {
+        if (s[i] == mn || s[i] == mx)
+        {
+            return 2;
+        }
+    }
+    return 3;
+}
