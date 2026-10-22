@@ -6,55 +6,36 @@ public:
     int minOperations(vector<int> &nums)
     {
         const int n = nums.size();
-        int x = 0, y = 0;
-        for (int i = 0; i < n; i++)
+        if (n == 1)
         {
-            if (nums[i] > nums[(i + 1) % n])
-            {
-                x++;
-            }
-            if (nums[i] < nums[(i + 1) % n])
-            {
-                y++;
-            }
+            return 0;
         }
-        int a = -1, b = -1;
-        for (int i = 0; i < n; i++)
+        int j = 0;
+        while (nums[j] != 0)
         {
-            if (nums[i] == 0)
-            {
-                a = i;
-                break;
-            }
+            j++;
         }
-        reverse(nums.begin(), nums.end());
-        for (int i = 0; i < n; i++)
+        bool x = true, y = true;
+        for (int i = 1; i < n; i++)
         {
-            if (nums[i] == 0)
+            const int z = nums[(i + j) % n];
+            if (z != i)
             {
-                b = i;
-                break;
+                x = false;
+            }
+            if (z != n - i)
+            {
+                y = false;
+            }
+            if (!x && !y)
+            {
+                return -1;
             }
         }
-        b++;
-        const int c = a == 0 ? 0 : min(a, b + 2), d = min(b, a + 2);
-        int ans;
-        if (x <= 1 && y <= 1)
+        if (x)
         {
-            ans = min(c, d);
+            return min(j, n - j + 2);
         }
-        else if (x <= 1 && y > 1)
-        {
-            ans = c;
-        }
-        else if (x > 1 && y <= 1)
-        {
-            ans = d;
-        }
-        else
-        {
-            ans = -1;
-        }
-        return ans;
+        return min(n - j, j + 2);
     }
 };
