@@ -6,7 +6,7 @@ public:
     int sortPermutation(vector<int> &nums)
     {
         const int n = nums.size();
-        int ans = ~0;
+        int ans = -1;
         for (int i = 0; i < n; i++)
         {
             if (nums[i] != i)
@@ -14,7 +14,7 @@ public:
                 ans &= nums[i];
             }
         }
-        if (ans == ~0)
+        if (ans == -1)
         {
             return 0;
         }
