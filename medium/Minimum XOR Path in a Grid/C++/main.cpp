@@ -10,7 +10,6 @@ public:
         dp[0][0][grid[0][0]] = 1;
         for (int i = 1; i < m; i++)
         {
-            dp[i][0] = (dp[i - 1][0] << 0);
             bitset<1024> x;
             for (int k = 0; k < 1024; k++)
             {
