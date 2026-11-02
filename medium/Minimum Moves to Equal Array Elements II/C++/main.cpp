@@ -5,12 +5,14 @@ class Solution
 public:
     int minMoves2(vector<int> &nums)
     {
-        int ans = 0, n = nums.size();
-        nth_element(nums.begin(), nums.begin() + (n / 2), nums.end());
-        int median = nums[n / 2];
-        for (int i = 0; i < n; i++)
+        const int n = nums.size();
+        int ans = 0, l = 0, r = n - 1;
+        sort(nums.begin(), nums.end());
+        while (l <= r)
         {
-            ans += abs(nums[i] - median);
+            ans += nums[r] - nums[l];
+            l++;
+            r--;
         }
         return ans;
     }
