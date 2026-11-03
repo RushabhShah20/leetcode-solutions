@@ -4,11 +4,16 @@ public class Solution
 {
     public int MinMoves(int[] nums)
     {
-        int ans = 0;
-        int x = nums.Max();
-        foreach (int num in nums)
+        int n = nums.Length;
+        int mx = 0;
+        for (int i = 0; i < n; i++)
         {
-            ans += (x - num);
+            mx = Math.Max(mx, nums[i]);
+        }
+        int ans = 0;
+        for (int i = 0; i < n; i++)
+        {
+            ans += mx - nums[i];
         }
         return ans;
     }

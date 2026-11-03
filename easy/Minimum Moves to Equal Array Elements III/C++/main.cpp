@@ -5,11 +5,16 @@ class Solution
 public:
     int minMoves(vector<int> &nums)
     {
-        int ans = 0;
-        int x = *max_element(nums.begin(), nums.end());
-        for (int num : nums)
+        const int n = nums.size();
+        int mx = 0;
+        for (int i = 0; i < n; i++)
         {
-            ans += (x - num);
+            mx = max(mx, nums[i]);
+        }
+        int ans = 0;
+        for (int i = 0; i < n; i++)
+        {
+            ans += mx - nums[i];
         }
         return ans;
     }

@@ -5,10 +5,14 @@
  * @return {number}
  */
 var minMoves = function (nums) {
+    const n = nums.length;
+    let mx = 0;
+    for (let i = 0; i < n; i++) {
+        mx = Math.max(mx, nums[i]);
+    }
     let ans = 0;
-    let x = Math.max(...nums);
-    for (const num of nums) {
-        ans += (x - num);
+    for (let i = 0; i < n; i++) {
+        ans += mx - nums[i];
     }
     return ans;
 };
