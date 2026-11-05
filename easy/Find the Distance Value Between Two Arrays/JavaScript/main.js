@@ -7,10 +7,11 @@
  * @return {number}
  */
 var findTheDistanceValue = function (arr1, arr2, d) {
+    const n = arr1.length, m = arr2.length;
     let ans = 0;
-    for (let i = 0; i < arr1.length; i++) {
+    for (let i = 0; i < n; i++) {
         let x = true;
-        for (let j = 0; j < arr2.length; j++) {
+        for (let j = 0; j < m; j++) {
             if (arr1[i] == arr2[j] || Math.abs(arr1[i] - arr2[j]) <= d) {
                 x = false;
                 break;

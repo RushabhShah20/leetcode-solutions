@@ -5,11 +5,12 @@ class Solution
 public:
     int findTheDistanceValue(vector<int> &arr1, vector<int> &arr2, int d)
     {
+        const int n = arr1.size(), m = arr2.size();
         int ans = 0;
-        for (int i = 0; i < arr1.size(); i++)
+        for (int i = 0; i < n; i++)
         {
             bool x = true;
-            for (int j = 0; j < arr2.size(); j++)
+            for (int j = 0; j < m; j++)
             {
                 if (arr1[i] == arr2[j] || abs(arr1[i] - arr2[j]) <= d)
                 {

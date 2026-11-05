@@ -4,11 +4,12 @@ public class Solution
 {
     public int FindTheDistanceValue(int[] arr1, int[] arr2, int d)
     {
+        int n = arr1.Length, m = arr2.Length;
         int ans = 0;
-        for (int i = 0; i < arr1.Length; i++)
+        for (int i = 0; i < n; i++)
         {
             bool x = true;
-            for (int j = 0; j < arr2.Length; j++)
+            for (int j = 0; j < m; j++)
             {
                 if (arr1[i] == arr2[j] || Math.Abs(arr1[i] - arr2[j]) <= d)
                 {

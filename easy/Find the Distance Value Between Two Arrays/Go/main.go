@@ -8,10 +8,12 @@ func Abs(x, y int) int {
 }
 
 func findTheDistanceValue(arr1 []int, arr2 []int, d int) int {
+	var n int = len(arr1)
+	var m int = len(arr2)
 	var ans int = 0
-	for i := 0; i < len(arr1); i++ {
+	for i := 0; i < n; i++ {
 		var x bool = true
-		for j := 0; j < len(arr2); j++ {
+		for j := 0; j < m; j++ {
 			if arr1[i] == arr2[j] || Abs(arr1[i], arr2[j]) <= d {
 				x = false
 				break
