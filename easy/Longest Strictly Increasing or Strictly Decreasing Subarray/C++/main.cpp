@@ -5,27 +5,29 @@ class Solution
 public:
     int longestMonotonicSubarray(vector<int> &nums)
     {
-        int ansIncreasing = 1, ansDecreasing = 1, maxIncreasing = 1, maxDecreasing = 1;
-        for (int i = 1; i < nums.size(); i++)
+        const int n = nums.size();
+        int a = 1, b = 1, c = 1, d = 1;
+        for (int i = 1; i < n; i++)
         {
             if (nums[i] > nums[i - 1])
             {
-                maxIncreasing++;
-                ansIncreasing = max(ansIncreasing, maxIncreasing);
-                maxDecreasing = 1;
+                c++;
+                a = max(a, c);
+                d = 1;
             }
             else if (nums[i] < nums[i - 1])
             {
-                maxDecreasing++;
-                ansDecreasing = max(ansDecreasing, maxDecreasing);
-                maxIncreasing = 1;
+                d++;
+                b = max(b, d);
+                c = 1;
             }
             else
             {
-                maxIncreasing = 1;
-                maxDecreasing = 1;
+                c = 1;
+                d = 1;
             }
         }
-        return max(ansIncreasing, ansDecreasing);
+        const int ans = max(a, b);
+        return ans;
     }
 };
