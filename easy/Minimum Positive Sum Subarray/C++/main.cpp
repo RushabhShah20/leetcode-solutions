@@ -5,37 +5,22 @@ class Solution
 public:
     int minimumSumSubarray(vector<int> &nums, int l, int r)
     {
-        int ans = -1;
-        for (int k = l; k <= r; k++)
+        const int n = nums.size();
+        int z = 100001;
+        for (int i = 0; i < n; i++)
         {
-            int sum = 0;
-            for (int i = 0; i < nums.size(); i++)
+            int x = 0;
+            for (int j = i; j < n; j++)
             {
-                if (i >= k)
+                x += nums[j];
+                const int y = j - i + 1;
+                if (x > 0 && y >= l && y <= r)
                 {
-                    sum += nums[i];
-                    sum -= nums[i - k];
-                }
-                else
-                {
-                    sum += nums[i];
-                }
-                if (i >= k - 1)
-                {
-                    if (sum > 0)
-                    {
-                        if (ans == -1)
-                        {
-                            ans = sum;
-                        }
-                        else
-                        {
-                            ans = min(ans, sum);
-                        }
-                    }
+                    z = min(z, x);
                 }
             }
         }
+        const int ans = z == 100001 ? -1 : z;
         return ans;
     }
 };
