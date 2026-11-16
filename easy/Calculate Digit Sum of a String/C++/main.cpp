@@ -7,26 +7,16 @@ public:
     {
         while (s.size() > k)
         {
-            vector<string> substrings;
-            for (int i = 0; i < s.size(); i += k)
-            {
-                substrings.push_back(s.substr(i, k));
-            }
-            for (int i = 0; i < substrings.size(); i++)
-            {
-                int sum = 0;
-                for (int j = 0; j < substrings[i].size(); j++)
-                {
-                    sum += (substrings[i][j] - '0');
+            string t;  
+            const int n = s.size();
+            for (int i = 0; i < n; i += k) {
+                int x = 0;
+                for (int j = i; j < min(i + k, n); ++j) {
+                    x += s[j] - '0';
                 }
-                substrings[i] = to_string(sum);
+                t.append(to_string(x));
             }
-            string ans = "";
-            for (int i = 0; i < substrings.size(); i++)
-            {
-                ans += substrings[i];
-            }
-            s = ans;
+            s = t;
         }
         return s;
     }
