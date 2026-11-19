@@ -5,42 +5,43 @@ class Solution
 public:
     int minimizeSum(vector<int> &nums)
     {
-        int s1 = 1000000001, s2 = 1000000001, s3 = 1000000001, l1 = 0, l2 = 0, l3 = 0;
-        for (const int &num : nums)
+        const int n = nums.size();
+        int mn1 = 1000000001, mn2 = 1000000001, mn3 = 1000000001, mx1 = 0, mx2 = 0, mx3 = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (s1 > num)
+            if (mn1 > nums[i])
             {
-                s3 = s2;
-                s2 = s1;
-                s1 = num;
+                mn3 = mn2;
+                mn2 = mn1;
+                mn1 = nums[i];
             }
-            else if (s2 > num)
+            else if (mn2 > nums[i])
             {
-                s3 = s2;
-                s2 = num;
+                mn3 = mn2;
+                mn2 = nums[i];
             }
-            else if (s3 > num)
+            else if (mn3 > nums[i])
             {
-                s3 = num;
+                mn3 = nums[i];
             }
-            if (l1 < num)
+            if (mx1 < nums[i])
             {
-                l3 = l2;
-                l2 = l1;
-                l1 = num;
+                mx3 = mx2;
+                mx2 = mx1;
+                mx1 = nums[i];
             }
-            else if (l2 < num)
+            else if (mx2 < nums[i])
             {
-                l3 = l2;
-                l2 = num;
+                mx3 = mx2;
+                mx2 = nums[i];
             }
-            else if (l3 < num)
+            else if (mx3 < nums[i])
             {
-                l3 = num;
+                mx3 = nums[i];
             }
         }
-        const int a = l3 - s1, b = l1 - s3, c = l2 - s2;
-        const int ans = min({a, b, c});
+        const int a = mx3 - mn1, b = mx1 - mn3, c = mx2 - mn2;
+        const int ans = min(a, min(b, c));
         return ans;
     }
 };
