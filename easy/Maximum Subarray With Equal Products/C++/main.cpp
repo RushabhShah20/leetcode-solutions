@@ -3,34 +3,23 @@
 class Solution
 {
 public:
-    int gcd(int a, int b)
+    int gcd(const int a, const int b)
     {
         return b == 0 ? a : gcd(b, a % b);
     }
-    int lcm(int a, int b)
-    {
-        return a * b / gcd(a, b);
-    }
     int maxLength(vector<int> &nums)
     {
-        int n = nums.size(), ans = 1;
-        for (int i = 0; i < n; i++)
+        const int n = nums.size();
+        int ans = 2, x = 1, i = 0;
+        for (int j = 0; j < n; j++)
         {
-            int p = nums[i], l = nums[i], g = nums[i];
-            for (int j = i + 1; j < n; j++)
+            while (gcd(x, nums[j]) > 1)
             {
-                p *= nums[j];
-                l = lcm(l, nums[j]);
-                g = gcd(g, nums[j]);
-                if (p == g * l)
-                {
-                    ans = max(ans, j - i + 1);
-                }
-                else
-                {
-                    break;
-                }
+                x /= nums[i];
+                i++;
             }
+            x *= nums[j];
+            ans = max(ans, j - i + 1);
         }
         return ans;
     }
