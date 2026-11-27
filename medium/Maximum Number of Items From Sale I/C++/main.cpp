@@ -5,45 +5,31 @@ class Solution
 public:
     int maximumSaleItems(vector<vector<int>> &items, int budget)
     {
-        const int n = items.size(), mx = 1500;
-        vector<int> a(mx + 1, 0);
+        const int n = items.size();
+        vector<int> a(budget + 1, 0);
+        int x = 1000000000;
         for (int i = 0; i < n; i++)
         {
-            a[items[i][0]]++;
-        }
-        vector<int> b(mx + 1, 0);
-        for (int i = 1; i <= mx; i++)
-        {
-            for (int j = i; j <= mx; j += i)
+            const int y = items[i][0], z = items[i][1];
+            x = min(x, z);
+            int b = 0;
+            for (int j = 0; j < n; j++)
             {
-                b[i] += a[j];
-            }
-        }
-        vector<int> dp(budget + 1, 0);
-        for (int i = 0; i < n; i++)
-        {
-            const int x = items[i][1], y = b[items[i][0]] - 1;
-            vector<int> c(budget + 1, -1);
-            for (int j = x; j <= budget; j++)
-            {
-                if (dp[j - x] != -1)
+                if (items[j][0] % y == 0)
                 {
-                    c[j] = dp[j - x] + 1 + y;
+                    b++;
                 }
             }
-            for (int j = x; j <= budget; j++)
+            for (int j = budget; j >= z; j--)
             {
-                if (c[j - x] != -1)
-                {
-                    c[j] = max(c[j], c[j - x] + 1);
-                }
-            }
-            for (int j = 0; j <= budget; j++)
-            {
-                dp[j] = max(dp[j], c[j]);
+                a[j] = max(a[j], a[j - z] + b);
             }
         }
-        const int ans = dp[budget];
+        int ans = 0;
+        for (int i = 0; i <= budget; i++)
+        {
+            ans = max(ans, a[i] + (budget - i) / x);
+        }
         return ans;
     }
 };
